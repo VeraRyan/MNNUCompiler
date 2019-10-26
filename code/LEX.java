@@ -1,5 +1,5 @@
 class lex{
-	public char state='S';	//¿ªÊ¼×´Ì¬
+	public char state='S';	//ï¿½ï¿½Ê¼×´Ì¬
 	public String temp="";
 	public String process="";
 	public char hexstate='H';
@@ -20,34 +20,34 @@ class lex{
 			if(ch=='+'||ch=='-'||ch=='*'||ch=='/'||i==process.length()) {
 				if(ch=='+'||ch=='-'||ch=='*'||ch=='/') {
 					if(state==hexstate) {
-						System.out.println(temp+",ÊÇÊ®Áù½øÖÆÕûÊý");
+						System.out.println(temp+",ï¿½ï¿½Ê®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 					}else if(state==hexRealstate) {
-						System.out.println(temp+",ÊÇÊ®Áù½øÖÆÊµÊý");
+						System.out.println(temp+",ï¿½ï¿½Ê®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½");
 					}else if(state==decstate) {
-						System.out.println(temp+",ÊÇÊ®½øÖÆÕûÊýÄØ");
+						System.out.println(temp+",ï¿½ï¿½Ê®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 					}else if(state==decRealstate) {
-						System.out.println(temp+",ÊÇÊ®½øÖÆÊµÊýÄØ");
+						System.out.println(temp+",ï¿½ï¿½Ê®ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½");
 					}else if(state==otcstate) {
-						System.out.println(temp+",ÊÇ°Ë½øÖÆÕûÊýÄØ");
+						System.out.println(temp+",ï¿½Ç°Ë½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 					}else if(state==otcRealstate) {
-						System.out.println(temp+",ÊÇ°Ë½øÖÆÊµÊýÄØ");
+						System.out.println(temp+",ï¿½Ç°Ë½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½");
 					}
-					System.out.println(ch+",ÊÇÔËËã·û");
+					System.out.println(ch+",ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 				}else if(i==process.length()){
 					if(state==hexstate) {
-						System.out.println(temp+",ÊÇÊ®Áù½øÖÆÕûÊý");
+						System.out.println(temp+",ï¿½ï¿½Ê®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 					}else if(state==hexRealstate) {
-						System.out.println(temp+",ÊÇÊ®Áù½øÖÆÊµÊý");
+						System.out.println(temp+",ï¿½ï¿½Ê®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½");
 					}else if(state==decstate) {
-						System.out.println(temp+",ÊÇÊ®½øÖÆÕûÊýÄØ");
+						System.out.println(temp+",ï¿½ï¿½Ê®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 					}else if(state==decRealstate) {
-						System.out.println(temp+",ÊÇÊ®½øÖÆÊµÊýÄØ");
+						System.out.println(temp+",ï¿½ï¿½Ê®ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½");
 					}else if(state==otcstate) {
-						System.out.println(temp+",ÊÇ°Ë½øÖÆÕûÊýÄØ");
+						System.out.println(temp+",ï¿½Ç°Ë½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 					}else if(state==otcRealstate) {
-						System.out.println(temp+",ÊÇ°Ë½øÖÆÊµÊýÄØ");
+						System.out.println(temp+",ï¿½Ç°Ë½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½");
 					}
-					System.out.println("´Ê·¨·ÖÎö½áÊø");
+					System.out.println("ï¿½Ê·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 				}
 				temp="";
 				state='S';
@@ -55,21 +55,21 @@ class lex{
 				if(ch=='0'&&state=='S') {
 					if(process.charAt(i+1)=='x'||process.charAt(i+1)=='X') {
 						temp+=ch;
-						state='K';//Ìø×ªÊ®ÁùÕûÊý
+						state='K';//ï¿½ï¿½×ªÊ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					}else if(process.charAt(i+1)=='.') {
 						temp+=ch;
-						state='P';//Ìø×ªÕûÐÍÊµÊý
+						state='P';//ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
 					}else if(process.charAt(i+1)=='+'||process.charAt(i+1)=='-'||process.charAt(i+1)=='*'||process.charAt(i+1)=='/') {
 						temp+=ch;
-						state=decstate;//Ìø×ªÕûÐÍÖÕÌ¬
+						state=decstate;//ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¬
 					}else if(process.charAt(i+1)>='0'&&process.charAt(i+1)<='7') {
 						temp+=ch;
-						state='U';//Ìø×ª°Ë½øÕûÊý
+						state='U';//ï¿½ï¿½×ªï¿½Ë½ï¿½ï¿½ï¿½ï¿½ï¿½
 					}
 				}
 				/**
-				 * ÉÏÃæÊÇ¹ØÓÚÃ¿¸öÐÎÌ¬µÄ·ÖÖ§ËµÃ÷
-				 * ÏÂÃæÊÇÊ®Áù½øÖÆ×´Ì¬Ìø×ª
+				 * ï¿½ï¿½ï¿½ï¿½ï¿½Ç¹ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½Ì¬ï¿½Ä·ï¿½Ö§Ëµï¿½ï¿½
+				 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½×ª
 				 * **/
 				 else if((ch=='x'||ch=='X')&&state=='K') {
 					temp+=ch;
@@ -91,8 +91,8 @@ class lex{
 					state=hexRealstate;
 				}
 				/**
-				 * ÉÏÃæÊÇÊ®Áù½øÖÆ
-				 * ÏÂÃæÊÇ°Ë½øÖÆ
+				 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				 * ï¿½ï¿½ï¿½ï¿½ï¿½Ç°Ë½ï¿½ï¿½ï¿½
 				**/
 				 else if((ch>='0'&&ch<='7')&&state=='U') {
 					temp+=ch;
@@ -111,8 +111,8 @@ class lex{
 					state=otcRealstate;
 				}
 				/**
-				 * ÉÏÃæÊÇ°Ë½øÖÆ
-				 * ÏÂÃæÊÇÊ®½øÖÆ
+				 * ï¿½ï¿½ï¿½ï¿½ï¿½Ç°Ë½ï¿½ï¿½ï¿½
+				 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê®ï¿½ï¿½ï¿½ï¿½
 				 * **/
 				else if((ch>='1'&&ch<='9')&&state=='S') {
 					temp+=ch;
@@ -137,7 +137,7 @@ class lex{
 		}
 	}
 }
-public class Main {
+public class LEX {
 	public static void main(String args[]) {
 		String sentence="01546+0777.031-0x1234*0x21.34/0x988-1212+0*1.231/0.231";
 		lex lex=new lex(sentence);
