@@ -1,5 +1,5 @@
 class lex{
-	public char state='S';	//��ʼ״̬
+	public char state='S';	//开始状态
 	public String temp="";
 	public String process="";
 	public char hexstate='H';
@@ -17,37 +17,37 @@ class lex{
 			if(i<process.length()) {
 				ch=process.charAt(i);
 			}
-			if(ch=='+'||ch=='-'||ch=='*'||ch=='/'||i==process.length()) {
-				if(ch=='+'||ch=='-'||ch=='*'||ch=='/') {
+			if(ch=='+'||ch=='-'||ch=='*'||ch=='/'||ch=='('||ch==')'||i==process.length()) {
+				if(ch=='+'||ch=='-'||ch=='*'||ch=='/'||ch=='('||ch==')') {
 					if(state==hexstate) {
-						System.out.println(temp+",��ʮ����������");
+						System.out.println(temp+",是十六进制整数");
 					}else if(state==hexRealstate) {
-						System.out.println(temp+",��ʮ������ʵ��");
+						System.out.println(temp+",是十六进制实数");
 					}else if(state==decstate) {
-						System.out.println(temp+",��ʮ����������");
+						System.out.println(temp+",是十进制整数呢");
 					}else if(state==decRealstate) {
-						System.out.println(temp+",��ʮ����ʵ����");
+						System.out.println(temp+",是十进制实数呢");
 					}else if(state==otcstate) {
-						System.out.println(temp+",�ǰ˽���������");
+						System.out.println(temp+",是八进制整数呢");
 					}else if(state==otcRealstate) {
-						System.out.println(temp+",�ǰ˽���ʵ����");
+						System.out.println(temp+",是八进制实数呢");
 					}
-					System.out.println(ch+",�������");
+					System.out.println(ch+",是运算符");
 				}else if(i==process.length()){
 					if(state==hexstate) {
-						System.out.println(temp+",��ʮ����������");
+						System.out.println(temp+",是十六进制整数");
 					}else if(state==hexRealstate) {
-						System.out.println(temp+",��ʮ������ʵ��");
+						System.out.println(temp+",是十六进制实数");
 					}else if(state==decstate) {
-						System.out.println(temp+",��ʮ����������");
+						System.out.println(temp+",是十进制整数呢");
 					}else if(state==decRealstate) {
-						System.out.println(temp+",��ʮ����ʵ����");
+						System.out.println(temp+",是十进制实数呢");
 					}else if(state==otcstate) {
-						System.out.println(temp+",�ǰ˽���������");
+						System.out.println(temp+",是八进制整数呢");
 					}else if(state==otcRealstate) {
-						System.out.println(temp+",�ǰ˽���ʵ����");
+						System.out.println(temp+",是八进制实数呢");
 					}
-					System.out.println("�ʷ���������");
+					System.out.println("词法分析结束");
 				}
 				temp="";
 				state='S';
@@ -55,21 +55,21 @@ class lex{
 				if(ch=='0'&&state=='S') {
 					if(process.charAt(i+1)=='x'||process.charAt(i+1)=='X') {
 						temp+=ch;
-						state='K';//��תʮ������
+						state='K';//跳转十六整数
 					}else if(process.charAt(i+1)=='.') {
 						temp+=ch;
-						state='P';//��ת����ʵ��
+						state='P';//跳转整型实数
 					}else if(process.charAt(i+1)=='+'||process.charAt(i+1)=='-'||process.charAt(i+1)=='*'||process.charAt(i+1)=='/') {
 						temp+=ch;
-						state=decstate;//��ת������̬
+						state=decstate;//跳转整型终态
 					}else if(process.charAt(i+1)>='0'&&process.charAt(i+1)<='7') {
 						temp+=ch;
-						state='U';//��ת�˽�����
+						state='U';//跳转八进整数
 					}
 				}
 				/**
-				 * �����ǹ���ÿ����̬�ķ�֧˵��
-				 * ������ʮ������״̬��ת
+				 * 上面是关于每个形态的分支说明
+				 * 下面是十六进制状态跳转
 				 * **/
 				 else if((ch=='x'||ch=='X')&&state=='K') {
 					temp+=ch;
@@ -91,8 +91,8 @@ class lex{
 					state=hexRealstate;
 				}
 				/**
-				 * ������ʮ������
-				 * �����ǰ˽���
+				 * 上面是十六进制
+				 * 下面是八进制
 				**/
 				 else if((ch>='0'&&ch<='7')&&state=='U') {
 					temp+=ch;
@@ -111,8 +111,8 @@ class lex{
 					state=otcRealstate;
 				}
 				/**
-				 * �����ǰ˽���
-				 * ������ʮ����
+				 * 上面是八进制
+				 * 下面是十进制
 				 * **/
 				else if((ch>='1'&&ch<='9')&&state=='S') {
 					temp+=ch;
@@ -137,9 +137,9 @@ class lex{
 		}
 	}
 }
-public class LEX {
+public class LexProgram {
 	public static void main(String args[]) {
-		String sentence="01546+0777.031-0x1234*0x21.34/0x988-1212+0*1.231/0.231";
+		String sentence="01546+(0777.031-0x1234)*0x21.34/0x988-1212+0*1.231/0.231";
 		lex lex=new lex(sentence);
 		System.out.println(sentence);
 		lex.program();
