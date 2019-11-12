@@ -2,12 +2,12 @@ class lex{
 	public char state='S';	//开始状态
 	public String temp="";
 	public String process="";
-	public char hexstate='H';
-	public char hexRealstate='V';
-	public char decstate='D';
-	public char decRealstate='T';
-	public char otcstate='O';
-	public char otcRealstate='W';
+	public char hexstate='h';
+	public char hexRealstate='v';
+	public char decstate='d';
+	public char decRealstate='t';
+	public char otcstate='o';
+	public char otcRealstate='w';
 	lex(String sentence){
 		process=sentence;
 	}
